@@ -1,0 +1,162 @@
+:root {
+  --main-color: #3f51b5;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+}
+/*Start Landing Page */
+
+.settings {
+  width: 200px;
+  min-height: 100vh;
+  position: fixed;
+  left: -200px;
+  top: 0;
+  z-index: 5;
+  transition: 0.3s;
+  background-color: hsl(0deg 0% 0% / 63%);
+}
+.settings.open {
+  left: 0;
+}
+.settings > i {
+  position: absolute;
+  top: 100px;
+  width: 30px;
+  text-align: center;
+  padding: 8px 0;
+  background-color: transparent;
+  color: white;
+  font-size: 1.3em;
+  right: -30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.settings > i:hover {
+  transform: rotate(20deg);
+  color: var(--main-color);
+}
+
+.settings .colors-options {
+  padding: 20px;
+  color: white;
+}
+.settings .colors-options h4 {
+  text-align: center;
+  font-size: 1.2em;
+}
+.settings .colors-options ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+.settings .colors-options ul li {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  opacity: 0.5;
+  cursor: pointer;
+  gap: 5px;
+
+  background-color: white;
+}
+.settings .colors-options ul li:first-child {
+  background-color: #3f51b5;
+}
+.settings .colors-options ul li:nth-child(2) {
+  background-color: rgb(56, 142, 60);
+}
+.settings .colors-options ul li:nth-child(3) {
+  background-color: rgb(255, 234, 0);
+}
+.settings .colors-options ul li:nth-child(4) {
+  background-color: rgb(229, 57, 53);
+}
+.settings .colors-options ul li:nth-child(5) {
+  background-color: rgb(213, 0, 249);
+}
+.settings .colors-options ul li.active {
+  opacity: 1;
+}
+.landing {
+  min-height: 100vh;
+  background-image: url(../assets/01.jpg);
+  background-size: cover;
+  transition: 2s;
+  position: relative;
+}
+.landing .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00000057;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+}
+
+.landing .header {
+  position: relative;
+  color: white;
+  z-index: 2;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 10px;
+}
+.landing .header .logo {
+  font-size: 2em;
+  user-select: none;
+  font-weight: 900;
+  color: var(--main-color);
+}
+.landing .header ul {
+  list-style: none;
+}
+.landing .header ul li {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+}
+.landing .header ul li a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.landing .header ul li a:hover,
+.landing .header ul li a.active {
+  color: var(--main-color);
+}
+.landing .intro-txt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  user-select: none;
+  z-index: 2;
+}
+.landing .intro-txt h2 {
+  font-size: 35px;
+  margin: 0;
+  margin-bottom: 15px;
+}
+.landing .intro-txt h2 span {
+  color: var(--main-color);
+  font-weight: bolder;
+}
+.landing .intro-txt p {
+  font-size: 20px;
+  line-height: 1.8;
+  padding: 0 25px;
+}
+/*End Landing Page */
