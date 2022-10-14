@@ -23,7 +23,7 @@ colorLi.forEach((el) => {
 
 let landing = document.querySelector(".landing");
 
-let imgsArray = ["02.jpg", "03.jpg", "04.jpg", "05.jpg"];
+let imgsArray = ["02.jpg", "03.jpg", "05.jpg"];
 
 setInterval(() => {
   let imgIndex = Math.floor(Math.random() * imgsArray.length);
