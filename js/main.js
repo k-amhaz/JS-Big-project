@@ -1,10 +1,19 @@
+let bgInter;
+let bgOption = true;
+
 let mainColors = localStorage.getItem("color");
 const colorLi = document.querySelectorAll(".settings li");
 let thePage = document.querySelector(".page");
 
-let bgOption = true;
+let bgOptionLocal = localStorage.getItem("bgOption");
 
-let bgInter;
+if (bgOptionLocal != null) {
+  if (bgOptionLocal === "true") {
+    bgOption = true;
+  } else if (bgOptionLocal === "false") {
+    bgOption = false;
+  }
+}
 
 if (mainColors != null) {
   document.documentElement.style.setProperty("--main-color", mainColors);
@@ -60,9 +69,11 @@ bgButtons.forEach((el) => {
     if (e.target.dataset.option === "yes") {
       bgOption = true;
       bgInterval();
+      localStorage.setItem("bgOption", true);
     } else if (e.target.dataset.option === "no") {
       bgOption = false;
       clearInterval(bgInter);
+      localStorage.setItem("bgOption", false);
     }
   });
 });
