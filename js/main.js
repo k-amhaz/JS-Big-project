@@ -2,6 +2,10 @@ let mainColors = localStorage.getItem("color");
 const colorLi = document.querySelectorAll(".settings li");
 let thePage = document.querySelector(".page");
 
+let bgOption = true;
+
+let bgInter;
+
 if (mainColors != null) {
   document.documentElement.style.setProperty("--main-color", mainColors);
 
@@ -20,13 +24,6 @@ thePage.onclick = () => {
   settings.classList.remove("open");
 };
 
-bgButtons.forEach((el) => {
-  el.addEventListener("click", (e) => {
-    activationRmv(bgButtons);
-    e.target.classList.add("active");
-  });
-});
-
 colorLi.forEach((el) => {
   el.addEventListener("click", (e) => {
     document.documentElement.style.setProperty(
@@ -43,12 +40,6 @@ let landing = document.querySelector(".landing");
 
 let imgsArray = ["02.jpg", "03.jpg", "05.jpg"];
 
-setInterval(() => {
-  let imgIndex = Math.floor(Math.random() * imgsArray.length);
-
-  landing.style.backgroundImage = `url(../assets/${imgsArray[imgIndex]})`;
-}, 2000);
-
 function activationRmv(array) {
   array.forEach((el) => {
     el.classList.remove("active");
@@ -61,3 +52,28 @@ function activationAdColors() {
     }
   });
 }
+
+bgButtons.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    activationRmv(bgButtons);
+    e.target.classList.add("active");
+    if (e.target.dataset.option === "yes") {
+      bgOption = true;
+      bgInterval();
+    } else if (e.target.dataset.option === "no") {
+      bgOption = false;
+      clearInterval(bgInter);
+    }
+  });
+});
+
+function bgInterval() {
+  if (bgOption === true) {
+    bgInter = setInterval(() => {
+      let imgIndex = Math.floor(Math.random() * imgsArray.length);
+
+      landing.style.backgroundImage = `url(../assets/${imgsArray[imgIndex]})`;
+    }, 2000);
+  }
+}
+bgInterval();
