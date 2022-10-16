@@ -1,7 +1,9 @@
 :root {
   --main-color: #3f51b5;
 }
-
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: "Cairo", sans-serif;
 }
@@ -40,7 +42,7 @@ body {
 
 .settings .colors-options {
   padding: 20px;
-  color: white;
+  color: var(--main-color);
 }
 .settings .colors-options h4 {
   text-align: center;
@@ -82,6 +84,33 @@ body {
 .settings .colors-options ul li.active {
   opacity: 1;
 }
+.settings .bg-options {
+  padding: 20px;
+  text-align: center;
+  color: var(--main-color);
+}
+.settings .bg-options h4 {
+  text-align: center;
+  font-size: 16px;
+}
+.bg-options button {
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  opacity: 0.8;
+  outline: none;
+}
+.bg-options button.active {
+  opacity: 1;
+}
+.bg-options button:hover {
+  scale: 1.1;
+}
+
 .landing {
   min-height: 100vh;
   background-image: url(../assets/01.jpg);

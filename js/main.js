@@ -1,13 +1,31 @@
 let mainColors = localStorage.getItem("color");
-document.documentElement.style.setProperty("--main-color", mainColors);
+const colorLi = document.querySelectorAll(".settings li");
+let thePage = document.querySelector(".page");
 
+if (mainColors != null) {
+  document.documentElement.style.setProperty("--main-color", mainColors);
+
+  activationRmv(colorLi);
+  activationAdColors();
+}
+let settingsIcon = document.querySelector(".settings > i");
 let settings = document.querySelector(".settings");
+let bgButtons = document.querySelectorAll(".bg-options button");
 
-settings.onclick = function () {
-  this.classList.toggle("open");
+settingsIcon.onclick = function () {
+  settings.classList.toggle("open");
 };
 
-const colorLi = document.querySelectorAll(".settings li");
+thePage.onclick = () => {
+  settings.classList.remove("open");
+};
+
+bgButtons.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    activationRmv(bgButtons);
+    e.target.classList.add("active");
+  });
+});
 
 colorLi.forEach((el) => {
   el.addEventListener("click", (e) => {
@@ -16,7 +34,7 @@ colorLi.forEach((el) => {
       e.target.dataset.color
     );
     localStorage.setItem("color", e.target.dataset.color);
-    activation();
+    activationRmv(colorLi);
     e.target.classList.add("active");
   });
 });
@@ -31,8 +49,15 @@ setInterval(() => {
   landing.style.backgroundImage = `url(../assets/${imgsArray[imgIndex]})`;
 }, 2000);
 
-function activation() {
-  colorLi.forEach((el) => {
+function activationRmv(array) {
+  array.forEach((el) => {
     el.classList.remove("active");
+  });
+}
+function activationAdColors() {
+  colorLi.forEach((el) => {
+    if (el.dataset.color === mainColors) {
+      el.classList.add("active");
+    }
   });
 }
